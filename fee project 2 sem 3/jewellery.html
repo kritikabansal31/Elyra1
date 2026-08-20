@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — Jewellery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="index.html#categories" class="nav__link nav__link--active">Shop</a>
+      <a href="about.html" class="nav__link">About Us</a>
+      <a href="contact.html" class="nav__link">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="cart.html" class="nav__icon-btn" aria-label="Cart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+      <div class="nav__profile" id="navProfile"><div class="nav__profile-avatar" id="navProfileAvatar">A</div><span id="navProfileName">User</span></div>
+      <a href="login.html" class="nav__login-btn" id="navSignIn">Sign In</a>
+      <button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="shop-hero">
+      <span class="shop-hero__label">Fine &amp; Fashion Jewellery</span>
+      <h1 class="shop-hero__title">Jewellery</h1>
+    </section>
+    <section class="shop-grid-section">
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://cdn.notonthehighstreet.com/fs/e4/bd/9fc5-b742-43c0-8aea-e22ee2e59980/original_gold-layered-necklace.jpg" alt="Gold Necklace" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Layered Gold Necklace</p><p class="shop-card__price">₹2,499 · 18K Gold Plated</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.mtZUD5On-B2ze7XpBZJb_wAAAA?r=0&w=300&h=375&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Statement Ring" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Statement Ring</p><p class="shop-card__price">₹1,299 · Silver / Gold</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.fKjYCczRt72cqbDogkBgPAHaHa?r=0&w=1050&h=1050&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pearl Earrings" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Pearl Drop Earrings</p><p class="shop-card__price">₹1,799 · White / Blush</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i5.walmartimages.com/seo/Women-925-Sterling-Silver-Charm-Bracelet-Jewelry_6a953c84-75c5-45b4-94d2-f3c1bfdf2006.e73a8db51e83d88f39d8403e5f66c8cb.jpeg" alt="Bracelet" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Charm Bracelet</p><p class="shop-card__price">₹999 · Rose Gold</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://ajpunnagai.com/cdn/shop/files/PN3416-1.webp?v=1742663310&width=1946" alt="Bangle Set" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Bangle Set of 4</p><p class="shop-card__price">₹1,599 · Gold / Silver</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="padding:22px 96px 28px;"><p class="footer__copy">&copy; 2026 ELYRA.</p><a href="index.html" style="font-size:0.68rem;color:var(--grey);">← Back to Home</a></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — Contact Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html"            class="nav__link">Home</a>
+      <a href="index.html#categories" class="nav__link">Shop</a>
+      <a href="index.html#edit"       class="nav__link">The Edit</a>
+      <a href="about.html"            class="nav__link">About Us</a>
+      <a href="contact.html"          class="nav__link nav__link--active">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="login.html" class="nav__login-btn">Sign In</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-main">
+
+    <!-- ===================== CONTACT HERO ===================== -->
+    <section class="page-hero contact-hero">
+      <div class="page-hero__content">
+        <span class="page-hero__label">Get in Touch</span>
+        <h1 class="page-hero__title">We'd love to <em>hear</em> from you.</h1>
+        <p class="page-hero__sub">Whether it's a question about sizing, an order, or just a thought — we read every message.</p>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT BODY ===================== -->
+    <section class="contact-body scroll-animate">
+
+      <!-- Left: Info -->
+      <div class="contact-info">
+
+        <div class="contact-info__block">
+          <h3 class="contact-info__heading">Studio Address</h3>
+          <p class="contact-info__text">ELYRA STUDIO<br>Sunview enclave, South city<br>LUDHIANA, India</p>
+        </div>
+
+        <div class="contact-info__block">
+          <h3 class="contact-info__heading">Email</h3>
+          <p class="contact-info__text">
+            <a href="mailto:hello@elyra.in" class="contact-info__link">hello@elyra.in</a><br>
+            <a href="mailto:orders@elyra.in" class="contact-info__link">orders@elyra.in</a>
+          </p>
+        </div>
+
+        <div class="contact-info__block">
+          <h3 class="contact-info__heading">Hours</h3>
+          <p class="contact-info__text">Monday – Saturday<br>10:00 am – 7:00 pm IST</p>
+        </div>
+
+        <div class="contact-info__block">
+          <h3 class="contact-info__heading">Follow</h3>
+          <div class="contact-socials">
+            <a href="#" class="contact-social__link">Instagram</a>
+            <a href="#" class="contact-social__link">Pinterest</a>
+            <a href="#" class="contact-social__link">LinkedIn</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Form -->
+      <form class="contact-form" action="#" method="post">
+
+        <div class="form-group">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Aanya Mehra" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="hello@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="subject">Subject</label>
+          <select class="form-input form-select" id="subject" name="subject">
+            <option value="">Select a topic</option>
+            <option value="order">Order &amp; Returns</option>
+            <option value="sizing">Sizing Help</option>
+            <option value="wholesale">Wholesale</option>
+            <option value="press">Press &amp; Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-input form-textarea" id="message" name="message" rows="5" placeholder="Tell us what's on your mind…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--gold btn--full">Send Message</button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="footer__logo">ELYRA</span>
+        <span class="footer__hairline"></span>
+      </div>
+      <nav class="footer__nav">
+        <div class="footer__col">
+          <h3 class="footer__col-heading">Shop</h3>
+          <ul class="footer__links">
+            <li><a href="index.html#categories" class="footer__link">Womenswear</a></li>
+            <li><a href="index.html#categories" class="footer__link">Menswear</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-heading">About</h3>
+          <ul class="footer__links">
+            <li><a href="about.html"   class="footer__link">About Us</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-heading">Help</h3>
+          <ul class="footer__links">
+            <li><a href="login.html" class="footer__link">My Account</a></li>
+            <li><a href="#"          class="footer__link">Returns</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 ELYRA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

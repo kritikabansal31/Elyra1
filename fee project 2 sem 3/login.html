@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+
+  <!-- Minimal nav — just logo + theme toggle -->
+  <header class="nav nav--minimal" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== AUTH CONTAINER ===================== -->
+  <div class="auth-wrap">
+
+    <!-- Left side — decorative image panel -->
+    <div class="auth-panel">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85&auto=format&fit=crop" alt="ELYRA fashion" class="auth-panel__img" />
+      <div class="auth-panel__overlay">
+        <span class="auth-panel__logo">ELYRA</span>
+        <p class="auth-panel__tagline">Where every fold tells a story.</p>
+      </div>
+    </div>
+
+    <!-- Right side — forms -->
+    <div class="auth-box">
+
+      <!-- Tab switcher -->
+      <div class="auth-tabs">
+        <button class="auth-tab auth-tab--active" id="tabLogin">Sign In</button>
+        <button class="auth-tab" id="tabSignup">Create Account</button>
+      </div>
+
+      <!-- ── LOGIN FORM ── -->
+      <form class="auth-form" id="loginForm" action="#" method="post">
+        <h2 class="auth-form__title">Welcome back</h2>
+        <p class="auth-form__sub">Sign in to your ELYRA account.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email</label>
+          <input class="form-input" type="email" id="loginEmail" name="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPass">Password</label>
+          <input class="form-input" type="password" id="loginPass" name="password" placeholder="••••••••" required />
+        </div>
+
+        <div class="auth-form__row">
+          <label class="auth-check">
+            <input type="checkbox" name="remember" />
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="auth-form__forgot">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn--gold btn--full">Sign In</button>
+
+        <p class="auth-form__switch">
+          Don't have an account?
+          <button type="button" class="auth-switch-link" id="goSignup">Create one</button>
+        </p>
+      </form>
+
+      <!-- ── SIGN UP FORM ── -->
+      <form class="auth-form auth-form--hidden" id="signupForm" action="#" method="post">
+        <h2 class="auth-form__title">Create account</h2>
+        <p class="auth-form__sub">Join ELYRA — it only takes a moment.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="signupName">Full Name</label>
+          <input class="form-input" type="text" id="signupName" name="name" placeholder="Aanya Mehra" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupEmail">Email</label>
+          <input class="form-input" type="email" id="signupEmail" name="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupPass">Password</label>
+          <input class="form-input" type="password" id="signupPass" name="password" placeholder="Min. 8 characters" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupConfirm">Confirm Password</label>
+          <input class="form-input" type="password" id="signupConfirm" name="confirm" placeholder="••••••••" required />
+        </div>
+
+        <label class="auth-check" style="margin-bottom:20px;">
+          <input type="checkbox" name="terms" required />
+          <span>I agree to the <a href="#" class="auth-form__forgot">Terms &amp; Privacy Policy</a></span>
+        </label>
+
+        <button type="submit" class="btn btn--gold btn--full">Create Account</button>
+
+        <p class="auth-form__switch">
+          Already have an account?
+          <button type="button" class="auth-switch-link" id="goLogin">Sign in</button>
+        </p>
+      </form>
+
+      <!-- ── SIGNED IN STATE (hidden by default) ── -->
+      <div class="auth-signedout" id="signedInBox" style="display:none;">
+        <div class="auth-signedout__icon">✓</div>
+        <h2 class="auth-form__title" id="welcomeName">You're signed in</h2>
+        <p class="auth-form__sub">Welcome back to ELYRA.</p>
+        <a href="index.html" class="btn btn--gold btn--full" style="margin-top:8px;">Go to Shop</a>
+        <button type="button" class="btn btn--outline btn--full" id="signOutBtn" style="margin-top:12px;">Sign Out</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Minimal inline JS only for tab switching + sign out on THIS page -->
+  <script>
+    // Tab switch
+    var tabLogin  = document.getElementById('tabLogin');
+    var tabSignup = document.getElementById('tabSignup');
+    var loginForm  = document.getElementById('loginForm');
+    var signupForm = document.getElementById('signupForm');
+    var goSignup = document.getElementById('goSignup');
+    var goLogin  = document.getElementById('goLogin');
+
+    function showLogin() {
+      tabLogin.classList.add('auth-tab--active');
+      tabSignup.classList.remove('auth-tab--active');
+      loginForm.classList.remove('auth-form--hidden');
+      signupForm.classList.add('auth-form--hidden');
+    }
+    function showSignup() {
+      tabSignup.classList.add('auth-tab--active');
+      tabLogin.classList.remove('auth-tab--active');
+      signupForm.classList.remove('auth-form--hidden');
+      loginForm.classList.add('auth-form--hidden');
+    }
+
+    tabLogin.addEventListener('click',  showLogin);
+    tabSignup.addEventListener('click', showSignup);
+    goSignup.addEventListener('click',  showSignup);
+    goLogin.addEventListener('click',   showLogin);
+
+    // Sign out button
+    document.getElementById('signOutBtn').addEventListener('click', function () {
+      localStorage.removeItem('elyra_user_name');
+      document.getElementById('signedInBox').style.display = 'none';
+      loginForm.classList.remove('auth-form--hidden');
+      signupForm.classList.add('auth-form--hidden');
+      tabLogin.classList.add('auth-tab--active');
+      tabSignup.classList.remove('auth-tab--active');
+    });
+
+    // Agar pehle se signed in ho
+    var existing = localStorage.getItem('elyra_user_name');
+    if (existing) {
+      loginForm.classList.add('auth-form--hidden');
+      var box = document.getElementById('signedInBox');
+      box.style.display = 'flex';
+      document.getElementById('welcomeName').textContent = 'Welcome, ' + existing.split(' ')[0] + '!';
+    }
+
+    // Login submit — name save karo localStorage mein
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Login pe naam nahi hota — email se pehla part lo
+      var email = document.getElementById('loginEmail').value;
+      var guessedName = email.split('@')[0];
+      localStorage.setItem('elyra_user_name', guessedName);
+      loginForm.classList.add('auth-form--hidden');
+      var box = document.getElementById('signedInBox');
+      box.style.display = 'flex';
+      document.getElementById('welcomeName').textContent = 'Welcome, ' + guessedName + '!';
+    });
+
+    // Signup submit — naam save karo
+    signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fullName = document.getElementById('signupName').value.trim();
+      localStorage.setItem('elyra_user_name', fullName);
+      signupForm.classList.add('auth-form--hidden');
+      var box = document.getElementById('signedInBox');
+      box.style.display = 'flex';
+      document.getElementById('welcomeName').textContent = 'Welcome, ' + fullName.split(' ')[0] + '!';
+    });
+  </script>
+</body>
+</html>
