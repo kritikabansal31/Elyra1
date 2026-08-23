@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — Womenswear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html"            class="nav__link">Home</a>
+      <a href="index.html#categories" class="nav__link nav__link--active">Shop</a>
+      <a href="index.html#edit"       class="nav__link">The Edit</a>
+      <a href="about.html"            class="nav__link">About Us</a>
+      <a href="contact.html"          class="nav__link">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="cart.html" class="nav__icon-btn" aria-label="Cart">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <div class="nav__profile" id="navProfile">
+        <div class="nav__profile-avatar" id="navProfileAvatar">A</div>
+        <span id="navProfileName">User</span>
+      </div>
+      <a href="login.html" class="nav__login-btn" id="navSignIn">Sign In</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-main">
+
+    <!-- Hero -->
+    <section class="shop-hero">
+      <span class="shop-hero__label">Collection 2026</span>
+      <h1 class="shop-hero__title">Womenswear</h1>
+    </section>
+
+    <!-- All 5 dresses -->
+    <section class="shop-grid-section scroll-animate" id="womenswear">
+      <h2 class="shop-grid-section__title">Womenswear — New Arrivals</h2>
+      <div class="shop-grid">
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://th.bing.com/th/id/R.f256a66922702aa046420d0de5f77030?rik=%2fu6AtpedaV0ICw&riu=http%3a%2f%2fshomiofficial.com%2fcdn%2fshop%2fproducts%2f081_547d6cea-360b-48ec-8afd-8ffeae777ba4.jpg%3fv%3d1656669464&ehk=exxMsXy0WQvBkWt%2f0APQv8QzWerCKsrJV67OPuDjvMA%3d&risl=&pid=ImgRaw&r=0" alt="Salwar Suits" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Salwar Suits</p>
+            <p class="shop-card__price">₹8,499</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/474x/01/fe/b7/01feb71c892be69675b6311b4b758cc8.jpg?nii=t" alt="Fashion tops" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Tops</p>
+            <p class="shop-card__price">₹5,999</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://image.made-in-china.com/2f0j00BbwkrUTECdcV/Women-Dresses-Simple-Classy-Long-Bodycon-Dress-Tropical-Elegant-Casual-Pleated.jpg" alt="Wrap Midi Skirt" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Wrap Midi Skirt</p>
+            <p class="shop-card__price">₹3,299</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.bbwwfuUoOouMPQWPV0e17gHaJ4?r=0&w=720&h=960&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lehenge" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Lehenge</p>
+            <p class="shop-card__price">₹7,199</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://5.imimg.com/data5/ANDROID/Default/2023/11/362474834/JF/MI/RW/135279971/product-jpeg-1000x1000.jpg" alt="Hoodies" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Hoodies</p>
+            <p class="shop-card__price">₹11,999</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Crosslink to menswear -->
+    <section style="padding:48px 96px; background:var(--dark); text-align:center;">
+      <p style="color:var(--grey); font-size:0.85rem; margin-bottom:18px;">Looking for menswear?</p>
+      <a href="menswear.html" class="btn btn--outline">View Menswear</a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="padding:22px 96px 28px;">
+      <p class="footer__copy">&copy; 2026 ELYRA. All rights reserved.</p>
+      <a href="index.html" style="font-size:0.68rem; color:var(--grey);">← Back to Home</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — The Drape</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== LOADING SCREEN ===================== -->
+  <div id="loader" class="loader">
+    <div class="loader__inner">
+      <span class="loader__logo">ELYRA</span>
+      <span class="loader__tagline">The Drape</span>
+      <div class="loader__bar"><div class="loader__fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div id="scrollProgress" class="scroll-progress"></div>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html"    class="nav__link">Home</a>
+      <a href="#categories"   class="nav__link">Shop</a>
+      <a href="#edit"         class="nav__link">The Edit</a>
+      <a href="about.html"    class="nav__link">About Us</a>
+      <a href="contact.html"  class="nav__link">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <!-- Dark / Light mode toggle -->
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <!-- Wishlist icon -->
+      <button class="nav__icon-btn" aria-label="Wishlist">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+
+      <!-- Bag icon — links to cart -->
+      <a href="cart.html" class="nav__icon-btn" aria-label="Cart">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+
+      <!-- Profile chip — JS dikhata hai agar signed in ho -->
+      <div class="nav__profile" id="navProfile">
+        <div class="nav__profile-avatar" id="navProfileAvatar">A</div>
+        <span id="navProfileName">User</span>
+      </div>
+
+      <!-- Login link — JS chhupata hai agar signed in ho -->
+      <a href="login.html" class="nav__login-btn" id="navSignIn">Sign In</a>
+
+      <!-- Hamburger for mobile -->
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO SLIDER ===================== -->
+    <section class="hero-slider" id="hero">
+
+      <div class="slide slide--1">
+        <div class="slide__content">
+          <span class="slide__label">New Season — Look 01</span>
+          <h1 class="slide__headline">Held in a<br>single <em>fold.</em></h1>
+          <div class="slide__cta">
+            <a href="#categories" class="btn btn--gold">Shop Now</a>
+            <a href="about.html" class="btn btn--outline">Our Story</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide slide--2">
+        <div class="slide__content">
+          <span class="slide__label">Womenswear — 2026</span>
+          <h1 class="slide__headline">Dressed in<br><em>silence.</em></h1>
+          <div class="slide__cta">
+            <a href="womenswear.html" class="btn btn--gold">View Womenswear</a>
+            <a href="jewellery.html" class="btn btn--outline">Jewellery</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide slide--3">
+        <div class="slide__content">
+          <span class="slide__label">Accessories — The Edit</span>
+          <h1 class="slide__headline">Every detail<br><em>matters.</em></h1>
+          <div class="slide__cta">
+            <a href="accessories.html" class="btn btn--gold">Shop Accessories</a>
+            <a href="bags.html" class="btn btn--outline">View Bags</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide slide--4">
+        <div class="slide__content">
+          <span class="slide__label">Menswear — 2026</span>
+          <h1 class="slide__headline">Crafted for<br><em>movement.</em></h1>
+          <div class="slide__cta">
+            <a href="menswear.html" class="btn btn--gold">View Menswear</a>
+            <a href="shoes.html" class="btn btn--outline">Shoes</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="slider-arrow slider-arrow--prev" id="sliderPrev">&#8592;</button>
+      <button class="slider-arrow slider-arrow--next" id="sliderNext">&#8594;</button>
+
+      <div class="slider-dots">
+        <button class="slider-dot" aria-label="Slide 1"></button>
+        <button class="slider-dot" aria-label="Slide 2"></button>
+        <button class="slider-dot" aria-label="Slide 3"></button>
+        <button class="slider-dot" aria-label="Slide 4"></button>
+      </div>
+
+    </section>
+
+    <!-- ===================== CATEGORIES ===================== -->
+    <section id="categories" class="categories scroll-animate">
+
+      <article class="cat-card cat-card--wide">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&q=90&auto=format&fit=crop&crop=top" alt="Womenswear" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="womenswear.html" class="cat-card__label">
+          <span class="cat-card__name">Womenswear</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--tall">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=700&q=90&auto=format&fit=crop&crop=top" alt="Menswear" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="menswear.html" class="cat-card__label">
+          <span class="cat-card__name">Menswear</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--tall">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.pexels.com/photos/5693889/pexels-photo-5693889.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Kidswear" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="kidswear.html" class="cat-card__label">
+          <span class="cat-card__name">Kidswear</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--narrow">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=90&auto=format&fit=crop&crop=center" alt="Shoes" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="shoes.html" class="cat-card__label">
+          <span class="cat-card__name">Shoes</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--mid">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=90&auto=format&fit=crop&crop=center" alt="Bags" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="bags.html" class="cat-card__label">
+          <span class="cat-card__name">Bags</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--narrow">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=600&q=90&auto=format&fit=crop&crop=center" alt="Sunglasses" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="sunglasses.html" class="cat-card__label">
+          <span class="cat-card__name">Sunglasses</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--mid">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=700&q=90&auto=format&fit=crop&crop=center" alt="Makeup" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="makeup.html" class="cat-card__label">
+          <span class="cat-card__name">Makeup</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--tall">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=700&q=90&auto=format&fit=crop&crop=center" alt="Jewellery" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="jewellery.html" class="cat-card__label">
+          <span class="cat-card__name">Jewellery</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <!-- <article class="cat-card cat-card--narrow">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=90&auto=format&fit=crop&crop=center" alt="Accessories" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="accessories.html" class="cat-card__label">
+          <span class="cat-card__name">Accessories</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article>
+
+      <article class="cat-card cat-card--mid">
+        <div class="cat-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700&q=90&auto=format&fit=crop&crop=center" alt="Heels" class="cat-card__img" loading="lazy" />
+        </div>
+        <a href="heels.html" class="cat-card__label">
+          <span class="cat-card__name">Heels</span>
+          <span class="cat-card__line"></span>
+        </a>
+      </article> -->
+
+    </section>
+
+    <!-- ===================== THE EDIT ===================== -->
+    <!-- 3 vertical portrait cards side by side -->
+    <section class="edit scroll-animate" id="edit">
+      <div class="edit__header">
+        <h2 class="edit__title">The Edit</h2>
+        <a href="#" class="edit__view-all">View all pieces</a>
+      </div>
+
+      <div class="edit__grid">
+
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1723802205505-2f88b2227718?w=600&q=85&auto=format&fit=crop&crop=top" alt="Accessories" class="product-card__img" loading="lazy" />
+            <button class="product-card__wish" aria-label="Add to wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <h3 class="product-card__name">Accessories</h3>
+          <hr class="product-card__rule" />
+          <p class="product-card__meta">
+            <span class="product-card__price">₹599</span>
+            <span class="product-card__material">Boiled Cashmere · Obsidian</span>
+          </p>
+          <button class="btn btn--cart">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&q=85&auto=format&fit=crop&crop=center" alt="Heels" class="product-card__img" loading="lazy" />
+            <button class="product-card__wish" aria-label="Add to wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <h3 class="product-card__name">Heels</h3>
+          <hr class="product-card__rule" />
+          <p class="product-card__meta">
+            <span class="product-card__price">₹4,299</span>
+            <span class="product-card__material">Canvas &amp; Leather · White</span>
+          </p>
+          <button class="btn btn--cart">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1682745230951-8a5aa9a474a0?w=600&auto=format&fit=crop&q=80" alt="The Lien Bag" class="product-card__img" loading="lazy" />
+            <button class="product-card__wish" aria-label="Add to wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <h3 class="product-card__name">The Lien Bag</h3>
+          <hr class="product-card__rule" />
+          <p class="product-card__meta">
+            <span class="product-card__price">₹5,999</span>
+            <span class="product-card__material">Pebbled Leather · Slate</span>
+          </p>
+          <button class="btn btn--cart">Add to Cart</button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================== CAMPAIGN ===================== -->
+    <section class="campaign" id="campaign">
+      <div class="campaign__sheen"></div>
+      <h2 class="campaign__word">MOVEMENT</h2>
+    </section>
+
+    <!-- ===================== NEW IN ===================== -->
+    <section class="new-in scroll-animate" id="new-in">
+      <div class="new-in__header">
+        <h2 class="new-in__title">New In</h2>
+        <a href="#" class="new-in__link">See all new arrivals</a>
+      </div>
+      <div class="new-in__grid">
+
+        <article class="new-card">
+          <div class="new-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=90&auto=format&fit=crop&crop=center" alt="Aviator Sunglasses" loading="lazy" />
+            <span class="new-card__tag">New</span>
+            <button class="new-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <h3 class="new-card__name">Sunglasses</h3>
+          <p class="new-card__price">₹1,299</p>
+          <button class="btn btn--cart btn--cart-sm">Add to Cart</button>
+        </article>
+
+        <article class="new-card">
+          <div class="new-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=90&auto=format&fit=crop&crop=center" alt="Luxury Makeup" loading="lazy" />
+            <span class="new-card__tag">New</span>
+            <button class="new-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <h3 class="new-card__name">Makeup</h3>
+          <p class="new-card__price">₹599</p>
+          <button class="btn btn--cart btn--cart-sm">Add to Cart</button>
+        </article>
+
+        <article class="new-card">
+          <div class="new-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=90&auto=format&fit=crop&crop=center" alt="Chelsea Boots" loading="lazy" />
+            <span class="new-card__tag">New</span>
+            <button class="new-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <h3 class="new-card__name">Shoes</h3>
+          <p class="new-card__price">₹2,499</p>
+          <button class="btn btn--cart btn--cart-sm">Add to Cart</button>
+        </article>
+
+        <article class="new-card">
+          <div class="new-card__img-wrap">
+            <img src="https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Perfume Bottle" loading="lazy" />
+            <span class="new-card__tag">New</span>
+            <button class="new-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <h3 class="new-card__name">Perfume</h3>
+          <p class="new-card__price">₹1,799</p>
+          <button class="btn btn--cart btn--cart-sm">Add to Cart</button>
+        </article>
+
+        <article class="new-card">
+          <div class="new-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=90&auto=format&fit=crop&crop=center" alt="Minimal Watch" loading="lazy" />
+            <span class="new-card__tag">New</span>
+            <button class="new-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <h3 class="new-card__name">Watches</h3>
+          <p class="new-card__price">₹8,999</p>
+          <button class="btn btn--cart btn--cart-sm">Add to Cart</button>
+        </article>
+
+        <article class="new-card">
+          <div class="new-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=90&auto=format&fit=crop&crop=center" alt="Mini Bag" loading="lazy" />
+            <span class="new-card__tag">New</span>
+            <button class="new-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <h3 class="new-card__name">Saddle Bag Mini</h3>
+          <p class="new-card__price">₹3,499</p>
+          <button class="btn btn--cart btn--cart-sm">Add to Cart</button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================== JOURNAL / MANIFESTO ===================== -->
+    <section class="manifesto scroll-animate" id="journal">
+      <div class="manifesto__heading">
+        <h2 class="manifesto__title">The Journal</h2>
+      </div>
+      <ol class="manifesto__list">
+        <li class="manifesto__item">
+          <span class="manifesto__num">01</span>
+          <p class="manifesto__text">A garment should move before it is seen. The drape is the first language.</p>
+        </li>
+        <li class="manifesto__item">
+          <span class="manifesto__num">02</span>
+          <p class="manifesto__text">Light is a material. We cut around it, not through it.</p>
+        </li>
+        <li class="manifesto__item">
+          <span class="manifesto__num">03</span>
+          <p class="manifesto__text">Finish is not decoration. It is the point at which craft becomes invisible.</p>
+        </li>
+        <li class="manifesto__item">
+          <span class="manifesto__num">04</span>
+          <p class="manifesto__text">We make one thing at a time, and we make it until it is right.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== WOMENSWEAR ===================== -->
+    <section class="shop-grid-section scroll-animate" id="womenswear">
+      <h2 class="shop-grid-section__title">Womenswear — New Arrivals</h2>
+      <div class="shop-grid">
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://th.bing.com/th/id/R.f256a66922702aa046420d0de5f77030?rik=%2fu6AtpedaV0ICw&riu=http%3a%2f%2fshomiofficial.com%2fcdn%2fshop%2fproducts%2f081_547d6cea-360b-48ec-8afd-8ffeae777ba4.jpg%3fv%3d1656669464&ehk=exxMsXy0WQvBkWt%2f0APQv8QzWerCKsrJV67OPuDjvMA%3d&risl=&pid=ImgRaw&r=0" alt="Salwar Suits" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Salwar Suits</p>
+            <p class="shop-card__price">₹8,499</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/474x/01/fe/b7/01feb71c892be69675b6311b4b758cc8.jpg?nii=t" alt="Fashion tops" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Tops</p>
+            <p class="shop-card__price">₹5,999</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://image.made-in-china.com/2f0j00BbwkrUTECdcV/Women-Dresses-Simple-Classy-Long-Bodycon-Dress-Tropical-Elegant-Casual-Pleated.jpg" alt="Wrap Midi Skirt" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Wrap Midi Skirt</p>
+            <p class="shop-card__price">₹3,299</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.bbwwfuUoOouMPQWPV0e17gHaJ4?r=0&w=720&h=960&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lehenge" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Lehenge</p>
+            <p class="shop-card__price">₹7,199</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://5.imimg.com/data5/ANDROID/Default/2023/11/362474834/JF/MI/RW/135279971/product-jpeg-1000x1000.jpg" alt="Hoodies" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Hoodies</p>
+            <p class="shop-card__price">₹11,999</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== MENSWEAR ===================== -->
+    <section class="shop-grid-section scroll-animate" id="menswear" style="background:var(--dark);">
+      <h2 class="shop-grid-section__title">Menswear — New Arrivals</h2>
+      <div class="shop-grid">
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/736x/99/f9/2c/99f92cf5f5974224aa22320d27f67467.jpg" alt="Slim Linen Suit" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Slim Linen Suit</p>
+            <p class="shop-card__price">₹14,999</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.mZGq8JVfmAshHiBOY73mWAHaHa?r=0&w=2000&h=2000&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sportwear" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Sportwear</p>
+            <p class="shop-card__price">₹12,499</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/originals/80/d9/76/80d97698c66a0b1e09806de890453bfe.jpg" alt="T-Shirt" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">T-Shirt</p>
+            <p class="shop-card__price">₹3,499</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/736x/f5/72/0a/f5720a5f9f00ec1bd5f878ba676cb1e1.jpg" alt="Tailored Trousers" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Tailored Trousers</p>
+            <p class="shop-card__price">₹4,999</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://png.pngtree.com/png-vector/20241010/ourlarge/pngtree-formal-mens-black-shirt-without-beground-png-image_14066586.png" alt="Shirt" loading="lazy" />
+            <button class="shop-card__wish" aria-label="Wishlist">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Black Shirt</p>
+            <p class="shop-card__price">₹6,299</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== KIDSWEAR ===================== -->
+    <section class="shop-grid-section scroll-animate" id="kidswear">
+      <h2 class="shop-grid-section__title">Kidswear — Little Ones</h2>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://m.media-amazon.com/images/I/81cIjkPd4pS._AC_UY1000_.jpg" alt="Floral Dress" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Floral Summer Dress</p>
+            <p class="shop-card__price">₹1,099 · 2Y 4Y 6Y 8Y</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://3.imimg.com/data3/WN/MP/MY-2743845/kids-cotton-shirt-500x500.jpg" alt="Cotton Shirt" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Cotton Shirt</p>
+            <p class="shop-card__price">₹499 · 3Y 5Y 6Y</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://5.imimg.com/data5/SG/SE/MY-60215845/kids-denim-dungaree-1000x1000.jpg" alt="Denim Dungaree" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Denim Dungaree</p>
+            <p class="shop-card__price">₹1,299 · 2Y 4Y 6Y</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i5.walmartimages.com/seo/Autumn-Winter-Baby-Boys-Jacket-Jacket-For-Boys-Children-Jacket-Kids-Hooded-Warm-Outerwear-Coat-For-Boy-Clothes-2-3-4-5-Yrs_0a1ada3c-a577-4f15-a609-5f75eaa4cd2a.29464305ef361477cb772f2da2c0c728.jpeg" alt="Ethnic Kurta" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Jackets </p>
+            <p class="shop-card__price">₹1,999 · 4Y 6Y 8Y 10Y</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/736x/da/5a/4d/da5a4d5bd14411d631e5836e83dcaf9c.jpg" alt="Puffer Jacket" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">kids kurta</p>
+            <p class="shop-card__price">₹2,099 · 3Y 5Y 7Y</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BAGS ===================== -->
+    <section class="shop-grid-section scroll-animate" id="bags" style="background:var(--dark)">
+      <h2 class="shop-grid-section__title">Bags — Carry with Intent</h2>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://cdna.lystit.com/photos/coachoutlet/663ac44d/coach-outlet-BeigePink-Teri-Shoulder-Bag-In-Signature-Canvas.jpeg" alt="Shoulder bags" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Shoulder bags</p>
+            <p class="shop-card__price">₹2,199 · Ecru / Black</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://th.bing.com/th/id/OIP.6hPnZ2RWBdAXM2wkh6_jFgHaIA?w=204&h=220&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Saddle Bag" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Saddle Bag Mini</p>
+            <p class="shop-card__price">₹3,499 · Tan / Brown</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.GaGH8ukDkoMeTRkk2bfXpQHaHa?r=0&w=800&h=800&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Laptop Bag" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Laptop bag</p>
+            <p class="shop-card__price">₹2,999 · Slate / Ivory</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i5.walmartimages.com/seo/Clutch-Purses-for-Women-Evening-Bags-Party-Clutches-Handbag-With-Detachable-Chain-Strap-for-Cocktail-Party-Black-Wedding-Purses-with-Pleated_82fd5870-a796-45be-a905-c308bf94df14.5822c35a215b066551d46a559df37b1a.jpeg" alt="Evening Clutch" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Evening Clutch</p>
+            <p class="shop-card__price">₹1,899 · Gold / Black</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://www.baggallini.com/dw/image/v2/BJGK_PRD/on/demandware.static/-/Sites-baggallini-products/default/dweef2de78/images/hi-res/ETB716_B0298_04.jpg" alt="Crossbody" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Crossbody Slim</p>
+            <p class="shop-card__price">₹2,799 · Camel / Noir</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SUNGLASSES ===================== -->
+    <section class="shop-grid-section scroll-animate" id="sunglasses">
+      <h2 class="shop-grid-section__title">Sunglasses — Frame the World</h2>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80&auto=format&fit=crop" alt="Aviator" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Aviator Classic</p>
+            <p class="shop-card__price">₹1,299 · Gold / Silver</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=500&q=80&auto=format&fit=crop" alt="Round" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Round Tortoise</p>
+            <p class="shop-card__price">₹999 · Tortoise / Black</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&q=80&auto=format&fit=crop" alt="Cat Eye" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Cat Eye Noir</p>
+            <p class="shop-card__price">₹1,499 · Black / Ivory</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://th.bing.com/th/id/OIP.8wm0nTaYlvuW2Guy3GY8TAHaHa?w=216&h=216&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Square" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Square Oversize</p>
+            <p class="shop-card__price">₹1,699 · Brown / Sand</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=500&q=80&auto=format&fit=crop" alt="Sport" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Sport Shield</p>
+            <p class="shop-card__price">₹1,899 · Black / Smoke</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MAKEUP ===================== -->
+    <section class="shop-grid-section scroll-animate" id="makeup" style="background:var(--dark)">
+      <h2 class="shop-grid-section__title">Makeup — Your Ritual</h2>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://static.thcdn.com/images/large/original/productimg/1600/1600/12655788-1735005269660213.jpg" alt="concealer" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">concealer</p>
+            <p class="shop-card__price">₹699 · 8 Shades</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://png.pngtree.com/png-clipart/20230425/original/pngtree-eyeshadow-palette-makeup-eye-makeup-color-png-image_9099962.png" alt="Eyeshadow" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Eyeshadow</p>
+            <p class="shop-card__price">₹1,499 · All Skin Tones</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i5.walmartimages.com/seo/Maybelline-Fit-Me-Matte-Poreless-Liquid-Foundation-Makeup-238-Rich-Tan-1-fl-oz_c2c0ccfc-8e83-4dbc-bafe-52f598f93184.5eaa35cce34bb0ba3c9d5617026a4181.jpeg" alt="Foundation" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Skin Finish Foundation</p>
+            <p class="shop-card__price">₹999 · 12 Shades</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://m.media-amazon.com/images/I/71F1K2oHiHL.jpg" alt="Makeup Brushes" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Makeup Brushes</p>
+            <p class="shop-card__price">₹1,199 </p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://media6.ppl-media.com/tr:h-750,w-750,c-at_max,dpr-2,q-40/static/img/product/348562/insight-intense-kohl-kajal-0-35gm-14-15-15_1_display_1710743271_5262184c.jpg" alt="Kajal" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Intense Kajal</p>
+            <p class="shop-card__price">₹349 · Black / Brown</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== JEWELLERY ===================== -->
+    <section class="shop-grid-section scroll-animate" id="jewellery">
+      <h2 class="shop-grid-section__title">Jewellery — Wear the Moment</h2>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://cdn.notonthehighstreet.com/fs/e4/bd/9fc5-b742-43c0-8aea-e22ee2e59980/original_gold-layered-necklace.jpg" alt="Gold Necklace" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Layered Gold Necklace</p>
+            <p class="shop-card__price">₹2,499 · 18K Gold Plated</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.mtZUD5On-B2ze7XpBZJb_wAAAA?r=0&w=300&h=375&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Statement Ring" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Statement Ring</p>
+            <p class="shop-card__price">₹1,299 · Silver / Gold</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.fKjYCczRt72cqbDogkBgPAHaHa?r=0&w=1050&h=1050&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pearl Earrings" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Pearl Drop Earrings</p>
+            <p class="shop-card__price">₹1,799 · White / Blush</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i5.walmartimages.com/seo/Women-925-Sterling-Silver-Charm-Bracelet-Jewelry_6a953c84-75c5-45b4-94d2-f3c1bfdf2006.e73a8db51e83d88f39d8403e5f66c8cb.jpeg" alt="Bracelet" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Charm Bracelet</p>
+            <p class="shop-card__price">₹999 · Rose Gold</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://ajpunnagai.com/cdn/shop/files/PN3416-1.webp?v=1742663310&width=1946" alt="Bangle Set" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Bangle Set of 4</p>
+            <p class="shop-card__price">₹1,599 · Gold / Silver</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ACCESSORIES ===================== -->
+    <section class="shop-grid-section scroll-animate" id="accessories" style="background:var(--dark)">
+      <h2 class="shop-grid-section__title">Accessories — The Finishing Touch</h2>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.1HOQGT6OCejkqOfSBjrdLAHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Silk Scarf" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Silk Printed Scarf</p>
+            <p class="shop-card__price">₹1,499 </p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.pinimg.com/736x/27/b3/31/27b3311398c5a2fc6a2ee8df5cd7c380.jpg" alt="Scrunchies" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Scrunchies</p>
+            <p class="shop-card__price">₹1,299 </p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i.etsystatic.com/24226876/r/il/7906b4/7838310361/il_1080xN.7838310361_5vss.jpg" alt="Bucket Hat" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Bucket Hat</p>
+            <p class="shop-card__price">₹899 · Beige / Olive</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://images.nexusapp.co/assets/f0/a7/23/60904347.jpg" alt="Gloves" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Baby Gloves</p>
+            <p class="shop-card__price">₹1,999 · Black / Ivory</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://th.bing.com/th/id/R.82056abc236ce8a4f33a7f4a043feb40?rik=9rrUHTl4MaXamQ&riu=http%3a%2f%2fauramma.com%2fcdn%2fshop%2fproducts%2fauramma-collections-matte-creamy-coffee-assorted-large-small-half-circle-butterfly-flower-keel-zig-zag-hair-claw-clips-flat-lay-display.jpg%3fv%3d1655481821%26width%3d1024&ehk=JQrip%2bYCch9w1t%2bm%2bwkAFcIIOazsoO8iVs3uRg0bu6M%3d&risl=&pid=ImgRaw&r=0" alt="Hair Clips" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body">
+            <p class="shop-card__name">Hair Clips</p>
+            <p class="shop-card__price">₹1,199 · Natural / Black</p>
+            <button class="shop-card__btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <span class="footer__logo">ELYRA</span>
+        <span class="footer__hairline"></span>
+      </div>
+
+      <nav class="footer__nav">
+        <div class="footer__col">
+          <h3 class="footer__col-heading">Shop</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Womenswear</a></li>
+            <li><a href="#" class="footer__link">Menswear</a></li>
+            <li><a href="#" class="footer__link">Shoes</a></li>
+            <li><a href="#" class="footer__link">Bags</a></li>
+            <li><a href="#" class="footer__link">Sunglasses</a></li>
+            <li><a href="#" class="footer__link">Makeup</a></li>
+            <li><a href="#" class="footer__link">Perfume</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-heading">About</h3>
+          <ul class="footer__links">
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="#" class="footer__link">The Drape</a></li>
+            <li><a href="#" class="footer__link">Craftsmanship</a></li>
+            <li><a href="#journal" class="footer__link">Journal</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-heading">Help</h3>
+          <ul class="footer__links">
+            <li><a href="contact.html" class="footer__link">Contact Us</a></li>
+            <li><a href="#" class="footer__link">Orders &amp; Returns</a></li>
+            <li><a href="#" class="footer__link">Sizing</a></li>
+            <li><a href="login.html" class="footer__link">My Account</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 ELYRA. All rights reserved.</p>
+      <nav class="footer__legal">
+        <a href="#" class="footer__legal-link">Privacy</a>
+        <a href="#" class="footer__legal-link">Terms</a>
+        <a href="#" class="footer__legal-link">Cookies</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

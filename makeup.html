@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — Makeup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="index.html#categories" class="nav__link nav__link--active">Shop</a>
+      <a href="about.html" class="nav__link">About Us</a>
+      <a href="contact.html" class="nav__link">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="cart.html" class="nav__icon-btn" aria-label="Cart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+      <div class="nav__profile" id="navProfile"><div class="nav__profile-avatar" id="navProfileAvatar">A</div><span id="navProfileName">User</span></div>
+      <a href="login.html" class="nav__login-btn" id="navSignIn">Sign In</a>
+      <button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="shop-hero">
+      <span class="shop-hero__label">Your Daily Ritual</span>
+      <h1 class="shop-hero__title">Makeup</h1>
+    </section>
+    <section class="shop-grid-section">
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://static.thcdn.com/images/large/original/productimg/1600/1600/12655788-1735005269660213.jpg" alt="concealer" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">concealer</p><p class="shop-card__price">₹699 · 8 Shades</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://png.pngtree.com/png-clipart/20230425/original/pngtree-eyeshadow-palette-makeup-eye-makeup-color-png-image_9099962.png" alt="Eyeshadow" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Eyeshadow</p><p class="shop-card__price">₹1,499 · All Skin Tones</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://i5.walmartimages.com/seo/Maybelline-Fit-Me-Matte-Poreless-Liquid-Foundation-Makeup-238-Rich-Tan-1-fl-oz_c2c0ccfc-8e83-4dbc-bafe-52f598f93184.5eaa35cce34bb0ba3c9d5617026a4181.jpeg" alt="Foundation" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Skin Finish Foundation</p><p class="shop-card__price">₹999 · 12 Shades</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+             <img src="https://m.media-amazon.com/images/I/71F1K2oHiHL.jpg" alt="Makeup Brushes" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Makeup Brushes</p><p class="shop-card__price">₹1,199 · 9 Shades</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+        <div class="shop-card">
+          <div class="shop-card__img-wrap">
+            <img src="https://media6.ppl-media.com/tr:h-750,w-750,c-at_max,dpr-2,q-40/static/img/product/348562/insight-intense-kohl-kajal-0-35gm-14-15-15_1_display_1710743271_5262184c.jpg" alt="Kajal" loading="lazy" />
+            <button class="shop-card__wish">♡</button>
+          </div>
+          <div class="shop-card__body"><p class="shop-card__name">Intense Kajal</p><p class="shop-card__price">₹349 · Black / Brown</p><button class="shop-card__btn">Add to Cart</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="padding:22px 96px 28px;"><p class="footer__copy">&copy; 2026 ELYRA.</p><a href="index.html" style="font-size:0.68rem;color:var(--grey);">← Back to Home</a></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

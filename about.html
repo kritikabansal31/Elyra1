@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELYRA — About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="index.html#categories" class="nav__link">Shop</a>
+      <a href="about.html" class="nav__link nav__link--active">About Us</a>
+      <a href="contact.html" class="nav__link">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="cart.html" class="nav__icon-btn" aria-label="Cart">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <div class="nav__profile" id="navProfile"><div class="nav__profile-avatar" id="navProfileAvatar">A</div><span id="navProfileName">User</span></div>
+      <a href="login.html" class="nav__login-btn" id="navSignIn">Sign In</a>
+      <button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="page-main">
+
+    <!-- HERO -->
+    <section class="page-hero about-hero">
+      <span class="page-hero__label">Est. 2018 · Mumbai</span>
+      <h1 class="page-hero__title">Where cloth meets<br><em>character.</em></h1>
+      <p class="page-hero__sub">ELYRA is an Indian fashion label built on one idea — that clothing should feel as natural as skin, not as loud as noise.</p>
+    </section>
+
+    <!-- STORY -->
+    <section class="about-intro scroll-animate">
+      <div class="about-intro__img">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=85&auto=format&fit=crop" alt="ELYRA atelier" loading="lazy" />
+      </div>
+      <div class="about-intro__text">
+        <h2 class="about-intro__heading">How ELYRA began</h2>
+        <p>ELYRA was founded in 2018 by Aanya Mehra, a Mumbai-based designer who trained for six years under master tailors in Milan and Paris. She returned to India with one obsession — to create clothes that drape, not just fit.</p>
+        <p>What started as a small atelier in Kala Ghoda with two tailors and a single sewing table has grown into a full fashion house covering womenswear, menswear, kidswear, jewellery, footwear, accessories, and beauty. Every product ELYRA makes still begins the same way: on a dress form, by hand.</p>
+        <p>We are not a fast-fashion brand. We do not chase trends. We make things that belong in your wardrobe for ten years — not ten days.</p>
+        <a href="index.html#categories" class="btn btn--gold" style="margin-top:24px;display:inline-block;">Shop the Collection</a>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="about-pillars scroll-animate">
+      <div class="about-pillars__header">
+        <h2 class="about-pillars__title">What ELYRA stands for</h2>
+      </div>
+      <div class="about-pillars__grid">
+        <div class="pillar-card">
+          <span class="pillar-card__icon">◇</span>
+          <h3 class="pillar-card__heading">Slow Fashion</h3>
+          <p class="pillar-card__text">We release two collections a year — not fifty-two. Each piece is designed, cut, stitched, and finished by artisans who sign their work. We believe the person who made your clothes should be proud of what they made.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-card__icon">◈</span>
+          <h3 class="pillar-card__heading">Indian Craft</h3>
+          <p class="pillar-card__text">ELYRA works with weavers in Varanasi, block printers in Jaipur, and leather workers in Kolkata. Every category carries a thread of traditional Indian craft, updated for the way people dress today.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-card__icon">◉</span>
+          <h3 class="pillar-card__heading">Responsible Making</h3>
+          <p class="pillar-card__text">We source deadstock fabrics, use natural dyes where possible, and pack all orders in recycled materials. Our goal is to reach zero waste in production by 2027 — we are currently at 34%.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-card__icon">◎</span>
+          <h3 class="pillar-card__heading">Size Inclusion</h3>
+          <p class="pillar-card__text">Every ELYRA garment is available from XS to 4XL at the same price. We do not charge more for more fabric. Bodies are different. Clothing should be too.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section class="about-numbers scroll-animate">
+      <div class="about-number"><span class="about-number__val">2018</span><span class="about-number__label">Year Founded</span></div>
+      <div class="about-number"><span class="about-number__val">24</span><span class="about-number__label">Artisans on Team</span></div>
+      <div class="about-number"><span class="about-number__val">6</span><span class="about-number__label">Cities We Work From</span></div>
+      <div class="about-number"><span class="about-number__val">100%</span><span class="about-number__label">Hand Finished</span></div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="about-quote scroll-animate">
+      <blockquote class="about-quote__text">"We don't design clothes. We design the space between the fabric and the body — and we fill that space with intention."</blockquote>
+      <cite class="about-quote__author">— Aanya Mehra, Founder &amp; Creative Director, ELYRA</cite>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand"><span class="footer__logo">ELYRA</span><span class="footer__hairline"></span></div>
+      <nav class="footer__nav">
+        <div class="footer__col"><h3 class="footer__col-heading">Shop</h3><ul class="footer__links">
+          <li><a href="womenswear.html" class="footer__link">Womenswear</a></li>
+          <li><a href="menswear.html" class="footer__link">Menswear</a></li>
+          <li><a href="kidswear.html" class="footer__link">Kidswear</a></li>
+        </ul></div>
+        <div class="footer__col"><h3 class="footer__col-heading">About</h3><ul class="footer__links">
+          <li><a href="about.html" class="footer__link">About Us</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul></div>
+        <div class="footer__col"><h3 class="footer__col-heading">Help</h3><ul class="footer__links">
+          <li><a href="login.html" class="footer__link">My Account</a></li>
+          <li><a href="cart.html" class="footer__link">My Bag</a></li>
+        </ul></div>
+      </nav>
+    </div>
+    <div class="footer__bottom"><p class="footer__copy">&copy; 2026 ELYRA. All rights reserved.</p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

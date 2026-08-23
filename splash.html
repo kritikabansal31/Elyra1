@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Redirect to homepage after 3 seconds -->
+  <meta http-equiv="refresh" content="3;url=abc.html" />
+  <title>ELYRA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0B0B0C;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Manrope', system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── Brand name ── */
+    .splash__logo {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(48px, 10vw, 96px);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: #F7F3EE;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.2s forwards;
+    }
+
+    /* ── Gold hairline under logo ── */
+    .splash__line {
+      width: 0;
+      height: 1px;
+      background: #B8935A;
+      margin-top: 18px;
+      animation: expandLine 0.8s ease 0.9s forwards;
+    }
+
+    /* ── Tagline ── */
+    .splash__tagline {
+      margin-top: 20px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C9C2B8;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.3s forwards;
+    }
+
+    /* ── Progress bar at bottom ── */
+    .splash__progress-track {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: rgba(247,243,238,.07);
+    }
+    .splash__progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #B8935A;
+      animation: progress 3s linear forwards;
+    }
+
+    /* ── Loading dots ── */
+    .splash__dots {
+      position: fixed;
+      bottom: 32px;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 1.6s forwards;
+    }
+    .splash__dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #B8935A;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .splash__dot:nth-child(2) { animation-delay: 0.2s; }
+    .splash__dot:nth-child(3) { animation-delay: 0.4s; }
+
+    /* ── Keyframes ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes expandLine {
+      from { width: 0; }
+      to   { width: 64px; }
+    }
+    @keyframes progress {
+      from { width: 0%; }
+      to   { width: 100%; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.85); }
+      50%       { opacity: 1;   transform: scale(1.15); }
+    }
+
+    /* Fade out whole page just before redirect */
+    body {
+      animation: pageFadeOut 0.4s ease 2.65s forwards;
+    }
+    @keyframes pageFadeOut {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
+
+    /* Light mode overrides */
+    body.light {
+      background: #F4F0EB;
+    }
+    body.light .splash__logo    { color: #1A1714; }
+    body.light .splash__tagline { color: #6B625A; }
+    body.light .splash__progress-track { background: rgba(26,23,20,.08); }
+  </style>
+</head>
+<body>
+  <script>
+    /* Apply saved theme BEFORE paint so there's no flash */
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.style.background = '#F4F0EB';
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('light');
+      });
+    }
+  </script>
+
+  <span class="splash__logo">ELYRA</span>
+  <span class="splash__line"></span>
+  <span class="splash__tagline">The Drape — New Season</span>
+
+  <div class="splash__dots">
+    <div class="splash__dot"></div>
+    <div class="splash__dot"></div>
+    <div class="splash__dot"></div>
+  </div>
+
+  <div class="splash__progress-track">
+    <div class="splash__progress-fill"></div>
+  </div>
+
+</body>
+</html>

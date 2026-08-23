@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELYRA — Watches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shop.css"/>
+</head>
+<body>
+<header class="nav">
+  <a href="abc.html" class="nav__logo">ELYRA</a>
+  <nav class="nav__links">
+    <a href="abc.html" class="nav__link">Home</a>
+    <a href="watches.html" class="nav__link active">Watches</a>
+    <a href="about.html" class="nav__link">About</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+  </nav>
+  <div class="nav__actions">
+    <button class="nav__icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="theme-toggle__sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-toggle__moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="cart.html" class="nav__icon-btn" aria-label="Cart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="nav__badge" id="cartBadge">0</span></a>
+    <div class="nav__user" id="navUser" style="display:none"><button class="nav__user-btn" id="navUserBtn"><span class="nav__user-avatar" id="navUserAvatar">A</span><span class="nav__user-name" id="navUserName">Account</span></button><div class="nav__user-dropdown" id="navUserDropdown"><div class="nav__user-dropdown-header"><span class="nav__user-dropdown-name" id="dropdownName"></span><span class="nav__user-dropdown-email" id="dropdownEmail"></span></div><hr class="nav__user-dropdown-rule"/><button class="nav__user-dropdown-item nav__user-dropdown-logout" id="logoutBtn">Sign Out</button></div></div>
+    <a href="login.html" class="nav__icon-btn" id="loginLink" aria-label="Login"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+  </div>
+</header>
+<div class="shop-hero">
+  <a href="abc.html" class="shop-hero__back">← Back to Home</a>
+  <h1 class="shop-hero__title">Watches</h1>
+  <p class="shop-hero__count">10 timepieces this season</p>
+</div>
+<div class="shop-filters">
+  <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+  <button class="filter-btn" onclick="filterProducts('classic',this)">Classic</button>
+  <button class="filter-btn" onclick="filterProducts('sport',this)">Sport</button>
+  <button class="filter-btn" onclick="filterProducts('minimal',this)">Minimal</button>
+</div>
+<main class="shop-grid" id="shopGrid"></main>
+<div class="toast" id="toast"></div>
+<footer class="shop-footer">
+  <span class="shop-footer__logo">ELYRA</span>
+  <nav class="shop-footer__links"><a href="abc.html" class="shop-footer__link">Home</a><a href="about.html" class="shop-footer__link">About</a><a href="contact.html" class="shop-footer__link">Contact</a><a href="cart.html" class="shop-footer__link">Cart</a></nav>
+  <span class="shop-footer__copy">&copy; 2026 ELYRA</span>
+</footer>
+<script>
+var ITEMS = [
+  { id:'wt1',  name:'Timepiece No. 5',      material:'Swiss Movement · Steel',   price:8999,  old:11999, tag:'New',  cat:'classic', img:'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'wt2',  name:'Minimal Dial Watch',   material:'Sapphire Crystal · White', price:6499,  old:0,     tag:'New',  cat:'minimal', img:'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'wt3',  name:'Sport Chrono',         material:'Titanium Case · Black',    price:12999, old:15999, tag:'Sale', cat:'sport',   img:'https://images.unsplash.com/photo-1548171915-e79a380a2a4b?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'wt4',  name:'Rose Gold Classic',    material:'18K Rose Gold · Leather',  price:9499,  old:0,     tag:'New',  cat:'classic', img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'wt5',  name:'Thin Quartz',          material:'Steel · Mesh Strap',       price:4999,  old:6499,  tag:'Sale', cat:'minimal', img:'https://images.unsplash.com/photo-1553545204-4f7d339aa06a?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'wt6',  name:'Dive Watch 200m',      material:'Ceramic Bezel · Blue',     price:11499, old:13999, tag:'Sale', cat:'sport',   img:'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'wt7',  name:'Skeleton Mechanical',  material:'Exhibition Caseback',      price:18999, old:0,     tag:'New',  cat:'classic', img:'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'wt8',  name:'Ultra-Thin Minimalist',material:'Brushed Steel · White',    price:5499,  old:6999,  tag:'Sale', cat:'minimal', img:'https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'wt9',  name:'GMT Traveller',        material:'Steel · Two-Tone Dial',    price:14999, old:0,     tag:'New',  cat:'classic', img:'https://images.unsplash.com/photo-1517142089942-ba376ce32a2e?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'wt10', name:'Rubber Sport Watch',   material:'Rubber Strap · Orange',    price:7999,  old:9999,  tag:'Sale', cat:'sport',   img:'https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+];
+</script>
+<script src="shop.js"></script>
+</body>
+</html>
