@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELYRA — Menswear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shop.css"/>
+</head>
+<body>
+<header class="nav">
+  <a href="abc.html" class="nav__logo">ELYRA</a>
+  <nav class="nav__links">
+    <a href="abc.html" class="nav__link">Home</a>
+    <a href="womenswear.html" class="nav__link">Womenswear</a>
+    <a href="menswear.html" class="nav__link active">Menswear</a>
+    <a href="about.html" class="nav__link">About</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+  </nav>
+  <div class="nav__actions">
+    <button class="nav__icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="theme-toggle__sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-toggle__moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="cart.html" class="nav__icon-btn" aria-label="Cart">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="nav__badge" id="cartBadge">0</span>
+    </a>
+    <div class="nav__user" id="navUser" style="display:none">
+      <button class="nav__user-btn" id="navUserBtn">
+        <span class="nav__user-avatar" id="navUserAvatar">A</span>
+        <span class="nav__user-name" id="navUserName">Account</span>
+      </button>
+      <div class="nav__user-dropdown" id="navUserDropdown">
+        <div class="nav__user-dropdown-header">
+          <span class="nav__user-dropdown-name" id="dropdownName"></span>
+          <span class="nav__user-dropdown-email" id="dropdownEmail"></span>
+        </div>
+        <hr class="nav__user-dropdown-rule"/>
+        <button class="nav__user-dropdown-item nav__user-dropdown-logout" id="logoutBtn">Sign Out</button>
+      </div>
+    </div>
+    <a href="login.html" class="nav__icon-btn" id="loginLink" aria-label="Login">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </a>
+  </div>
+</header>
+<div class="shop-hero">
+  <a href="abc.html" class="shop-hero__back">← Back to Home</a>
+  <h1 class="shop-hero__title">Menswear</h1>
+  <p class="shop-hero__count">12 pieces this season</p>
+</div>
+<div class="shop-filters">
+  <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+  <button class="filter-btn" onclick="filterProducts('suit',this)">Suits</button>
+  <button class="filter-btn" onclick="filterProducts('casual',this)">Casual</button>
+  <button class="filter-btn" onclick="filterProducts('outerwear',this)">Outerwear</button>
+</div>
+<main class="shop-grid" id="shopGrid"></main>
+<div class="toast" id="toast"></div>
+<footer class="shop-footer">
+  <span class="shop-footer__logo">ELYRA</span>
+  <nav class="shop-footer__links">
+    <a href="abc.html" class="shop-footer__link">Home</a>
+    <a href="about.html" class="shop-footer__link">About</a>
+    <a href="contact.html" class="shop-footer__link">Contact</a>
+    <a href="cart.html" class="shop-footer__link">Cart</a>
+  </nav>
+  <span class="shop-footer__copy">&copy; 2026 ELYRA</span>
+</footer>
+<script>
+var ITEMS = [
+  { id:'m1',  name:'Tailored Slim Blazer',  material:'Italian Wool · Charcoal',  price:8999,  old:11999, tag:'New',  cat:'suit',      img:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'m2',  name:'Linen Summer Shirt',    material:'Washed Linen · White',     price:2799,  old:0,     tag:'New',  cat:'casual',    img:'https://images.unsplash.com/photo-1594938298603-c8148c4b4545?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'m3',  name:'Wool Overcoat',         material:'Merino Wool · Navy',       price:16499, old:19999, tag:'Sale', cat:'outerwear', img:'https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'m4',  name:'Slim Chino Trousers',   material:'Stretch Cotton · Khaki',   price:3499,  old:0,     tag:'',     cat:'casual',    img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'m5',  name:'Classic Denim Jacket',  material:'Raw Denim · Indigo',       price:4599,  old:5999,  tag:'Sale', cat:'outerwear', img:'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'m6',  name:'Cotton Crew Knit',      material:'Pima Cotton · Oatmeal',    price:3299,  old:0,     tag:'',     cat:'casual',    img:'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'m7',  name:'Two-Piece Suit',        material:'Wool Blend · Midnight',    price:22999, old:28999, tag:'Sale', cat:'suit',      img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'m8',  name:'Merino Polo Shirt',     material:'Merino Wool · Navy',       price:3999,  old:0,     tag:'New',  cat:'casual',    img:'https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'m9',  name:'Leather Biker Jacket',  material:'Full-Grain Leather · Black',price:18999,old:23999, tag:'Sale', cat:'outerwear', img:'https://images.unsplash.com/photo-1520975954732-35dd22299614?w=600&q=85&auto=format&fit=crop', rating:'★★★★★' },
+  { id:'m10', name:'Oxford Button-Down',    material:'Oxford Cotton · Blue',     price:2499,  old:0,     tag:'',     cat:'suit',      img:'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'m11', name:'Jogger Trousers',       material:'French Terry · Grey',      price:2999,  old:3999,  tag:'Sale', cat:'casual',    img:'https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+  { id:'m12', name:'Quilted Vest',          material:'Nylon Ripstop · Olive',    price:5299,  old:0,     tag:'New',  cat:'outerwear', img:'https://images.unsplash.com/photo-1544441893-675973e31985?w=600&q=85&auto=format&fit=crop', rating:'★★★★☆' },
+];
+</script>
+<script src="shop.js"></script>
+</body>
+</html>

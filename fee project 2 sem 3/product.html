@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>ELYRA — Product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── PRODUCT DETAIL PAGE STYLES ── */
+    .pd-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 85vh;
+    }
+
+    /* LEFT — Gallery */
+    .pd-gallery {
+      position: sticky;
+      top: var(--nav-height, 60px);
+      height: calc(100vh - var(--nav-height, 60px));
+      background: var(--black);
+      display: flex;
+      gap: 0;
+    }
+    .pd-gallery__thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 10px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) transparent;
+    }
+    .pd-gallery__thumb {
+      width: 64px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 2px;
+      cursor: pointer;
+      opacity: 0.55;
+      border: 2px solid transparent;
+      transition: opacity 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .pd-gallery__thumb.active { opacity: 1; border-color: var(--gold); }
+    .pd-gallery__main-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .pd-gallery__main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: opacity 0.25s ease;
+    }
+    .pd-gallery__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(11,11,12,.6);
+      border: 1px solid rgba(247,243,238,.15);
+      color: var(--white);
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 3;
+    }
+    .pd-gallery__arrow:hover { background: var(--gold); color: var(--black); }
+    .pd-gallery__arrow--prev { left: 12px; }
+    .pd-gallery__arrow--next { right: 12px; }
+
+    /* RIGHT — Info */
+    .pd-info {
+      padding: 48px 52px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pd-breadcrumb {
+      font-size: 0.68rem;
+      color: var(--grey);
+      letter-spacing: 0.06em;
+    }
+    .pd-breadcrumb a { color: var(--grey); text-decoration: none; }
+    .pd-breadcrumb a:hover { color: var(--gold); }
+    .pd-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pd-name {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 42px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+    }
+    .pd-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pd-rating-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
+    .pd-rating-count { font-size: 0.75rem; color: var(--grey); }
+    .pd-price-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .pd-price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      font-family: var(--sans);
+    }
+    .pd-price-old {
+      font-size: 1rem;
+      color: var(--grey);
+      text-decoration: line-through;
+    }
+    .pd-discount {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #16a34a;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+    .pd-material {
+      font-size: 0.8rem;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* Colour picker */
+    .pd-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 10px;
+    }
+    .pd-colors { display: flex; flex-direction: column; gap: 6px; }
+    .pd-colors__row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pd-color-swatch {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+    }
+    .pd-color-swatch:hover { transform: scale(1.15); }
+    .pd-color-swatch.active {
+      border-color: var(--white);
+      box-shadow: 0 0 0 2px var(--gold);
+      transform: scale(1.1);
+    }
+    .pd-color-name {
+      font-size: 0.72rem;
+      color: var(--grey);
+      min-height: 1em;
+    }
+
+    /* Size picker */
+    .pd-sizes { display: flex; flex-direction: column; gap: 8px; }
+    .pd-sizes__row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pd-size-btn {
+      min-width: 46px;
+      padding: 8px 14px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(247,243,238,.2);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--grey);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .pd-size-btn:hover  { border-color: var(--white); color: var(--white); }
+    .pd-size-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+    /* Qty */
+    .pd-qty-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .pd-qty {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(247,243,238,.18);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .pd-qty-btn {
+      width: 38px; height: 38px;
+      background: rgba(247,243,238,.05);
+      color: var(--white);
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .pd-qty-btn:hover { background: var(--gold); color: var(--black); }
+    .pd-qty-val {
+      min-width: 42px;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      border-left:  1px solid rgba(247,243,238,.12);
+      border-right: 1px solid rgba(247,243,238,.12);
+      line-height: 38px;
+    }
+
+    /* Action buttons */
+    .pd-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pd-actions .btn { flex: 1; text-align: center; min-width: 140px; padding: 14px 20px; font-size: 0.78rem; }
+    .pd-wish-btn {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(247,243,238,.18);
+      background: transparent;
+      color: var(--grey);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+      flex-shrink: 0;
+    }
+    .pd-wish-btn:hover    { border-color: #ff0000; color: #ff0000; }
+    .pd-wish-btn.wishlisted { border-color: #ff0000; color: #ff0000; }
+
+    /* Details accordion */
+    .pd-details {
+      border-top: 1px solid rgba(247,243,238,.08);
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .pd-detail-row {
+      border-bottom: 1px solid rgba(247,243,238,.07);
+    }
+    .pd-detail-toggle {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-align: left;
+      padding: 14px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pd-detail-toggle::after { content: '+'; font-size: 1.1rem; color: var(--grey); transition: transform 0.2s; }
+    .pd-detail-toggle.open::after { content: '−'; }
+    .pd-detail-body {
+      font-size: 0.79rem;
+      color: var(--grey);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .pd-detail-body.open { max-height: 300px; padding-bottom: 14px; }
+
+    /* Reviews */
+    .pd-reviews { margin-top: 8px; }
+    .pd-reviews__title { font-family: var(--serif); font-size: 1.1rem; color: var(--white); margin-bottom: 14px; }
+    .pd-reviews__list  { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+    .pd-review {
+      background: var(--black);
+      border: 1px solid rgba(247,243,238,.06);
+      border-radius: 2px;
+      padding: 14px 16px;
+    }
+    .pd-review__header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .pd-review__stars  { color: var(--gold); font-size: 0.78rem; }
+    .pd-review__author { font-size: 0.72rem; font-weight: 600; color: var(--white); }
+    .pd-review__date   { font-size: 0.65rem; color: var(--grey); margin-left: auto; }
+    .pd-review__text   { font-size: 0.8rem; color: var(--grey); line-height: 1.65; }
+    .pd-review__empty  { font-size: 0.82rem; color: var(--grey); font-style: italic; padding: 12px 0; }
+
+    /* Review form */
+    .pd-review-form { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .pd-review-form__title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); }
+    .pd-star-pick { display: flex; gap: 4px; }
+    .pd-star-btn {
+      font-size: 1.4rem;
+      background: none; border: none;
+      color: rgba(247,243,238,.2);
+      cursor: pointer;
+      transition: color 0.15s, transform 0.15s;
+      padding: 2px;
+    }
+    .pd-star-btn:hover,
+    .pd-star-btn.active { color: var(--gold); transform: scale(1.15); }
+
+    /* ── QUALITY PROMISE SECTION ── */
+    .pd-quality-promise {
+      border-top: 1px solid rgba(247,243,238,.08);
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pd-quality-promise__title {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .pd-quality-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pd-quality-badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(184,147,90,.22);
+      border-radius: 2px;
+      background: rgba(184,147,90,.04);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pd-quality-badge:hover {
+      border-color: rgba(184,147,90,.5);
+      background: rgba(184,147,90,.07);
+    }
+    .pd-quality-badge__icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(184,147,90,.12);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+    .pd-quality-badge__text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .pd-quality-badge__heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+    .pd-quality-badge__desc {
+      font-size: 0.7rem;
+      color: var(--grey);
+      line-height: 1.55;
+    }
+
+    /* Related products */
+    .pd-related { padding: 60px 96px; background: var(--dark); }
+    .pd-related__title { font-family: var(--serif); font-size: clamp(22px, 3vw, 36px); color: var(--white); margin-bottom: 32px; }
+    .pd-related__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .pd-wrap { grid-template-columns: 1fr; }
+      .pd-gallery { position: relative; height: 70vw; max-height: 500px; }
+      .pd-gallery__thumbs { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding: 10px 16px; height: auto; }
+      .pd-gallery__thumb  { width: 52px; height: 64px; }
+      .pd-info { padding: 28px 20px; }
+      .pd-related { padding: 40px 20px; }
+    }
+    @media (max-width: 560px) {
+      .pd-related__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .pd-actions .btn { min-width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scrollProgress" class="scroll-progress"></div>
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo">ELYRA</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html"            class="nav__link">Home</a>
+      <a href="index.html#categories" class="nav__link nav__link--active">Shop</a>
+      <a href="index.html#edit"       class="nav__link">The Edit</a>
+      <a href="about.html"            class="nav__link">About Us</a>
+      <a href="contact.html"          class="nav__link">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="nav__icon-btn" aria-label="Wishlist">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <a href="cart.html" class="nav__icon-btn" aria-label="Cart">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <div class="nav__profile" id="navProfile"><div class="nav__profile-avatar" id="navProfileAvatar">A</div><span id="navProfileName">User</span></div>
+      <a href="login.html" class="nav__login-btn" id="navSignIn">Sign In</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- PRODUCT DETAIL -->
+  <main id="pdMain">
+    <!-- Rendered by JS -->
+    <div class="pd-loading" style="display:flex;align-items:center;justify-content:center;min-height:80vh;">
+      <p style="color:var(--grey);font-size:0.85rem;letter-spacing:0.1em;">Loading…</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="padding:22px 96px 28px;">
+      <p class="footer__copy">&copy; 2026 ELYRA. All rights reserved.</p>
+      <a href="index.html" style="font-size:0.68rem;color:var(--grey);">← Back to Home</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  // ── PRODUCT PAGE RENDERER ──────────────────────────────────
+  (function(){
+    var params  = new URLSearchParams(window.location.search);
+    var pid     = params.get('id');
+    var main    = document.getElementById('pdMain');
+
+    if (!pid || !window.PRODUCTS) {
+      main.innerHTML = '<div style="text-align:center;padding:120px 24px;"><h2 style="font-family:var(--serif);color:var(--white);">Product not found</h2><a href="index.html" class="btn btn--gold" style="margin-top:24px;">Back to Home</a></div>';
+      return;
+    }
+
+    var product = PRODUCTS.find(function(p){ return p.id === pid; });
+    if (!product) {
+      main.innerHTML = '<div style="text-align:center;padding:120px 24px;"><h2 style="font-family:var(--serif);color:var(--white);">Product not found</h2><a href="index.html" class="btn btn--gold" style="margin-top:24px;">Back to Home</a></div>';
+      return;
+    }
+
+    document.title = 'ELYRA — ' + product.name;
+
+    // Gallery images — use colors array images + main image
+    var galleryImgs = [];
+    if (product.gallery && product.gallery.length) {
+      galleryImgs = product.gallery;
+    } else if (product.colors && product.colors.length) {
+      product.colors.forEach(function(c){ if(galleryImgs.indexOf(c.image)===-1) galleryImgs.push(c.image); });
+    }
+    if (!galleryImgs.length || galleryImgs[0] !== product.image) galleryImgs.unshift(product.image);
+    galleryImgs = galleryImgs.filter(function(img, i, arr){ return arr.indexOf(img)===i; }); // deduplicate
+
+    // Reviews
+    var allReviews = getReviews();
+    var reviews    = allReviews[pid] || [];
+    var avgRating  = reviews.length
+      ? (reviews.reduce(function(s,r){return s+r.rating;},0)/reviews.length).toFixed(1) : null;
+
+    function starStr(n){
+      var s='';
+      for(var i=1;i<=5;i++) s+='<span style="color:'+(i<=n?'var(--gold)':'rgba(247,243,238,.2)')+'">★</span>';
+      return s;
+    }
+
+    // Category page link
+    var catLinks = {
+      womenswear:'womenswear.html', menswear:'menswear.html', kidswear:'kidswear.html',
+      sunglasses:'sunglasses.html', bags:'bags.html', shoes:'shoes.html', heels:'heels.html',
+      watches:'watches.html', jewellery:'jewellery.html', accessories:'accessories.html',
+      makeup:'makeup.html'
+    };
+    var catPage = catLinks[product.category] || 'index.html#categories';
+
+    // Details accordion content
+    var details = [
+      { title:'Product Details', body: (product.material||'Premium quality materials') + '. Designed for comfort and style. Available in multiple sizes and colours.' },
+      { title:'Shipping & Returns', body:'Free shipping on orders above ₹2000. Standard delivery in 3–5 business days. Easy 15-day returns — no questions asked.' },
+      { title:'Size Guide', body: product.sizes.length > 1 && product.sizes[0] !== 'OS'
+          ? 'Available sizes: ' + product.sizes.join(', ') + '. We recommend sizing up if between sizes.'
+          : 'One size fits most. Please check product description for exact measurements.' }
+    ];
+
+    // Build HTML
+    main.innerHTML = ''
+      + '<div class="pd-wrap">'
+
+      // ── LEFT: Gallery
+      + '<div class="pd-gallery">'
+        + '<div class="pd-gallery__thumbs" id="pdThumbs">'
+          + galleryImgs.map(function(img, i){
+              return '<img src="'+img+'" alt="'+escHtml(product.name)+' view '+(i+1)+'" class="pd-gallery__thumb'+(i===0?' active':'')+'" data-idx="'+i+'" loading="lazy"/>';
+            }).join('')
+        + '</div>'
+        + '<div class="pd-gallery__main-wrap">'
+          + '<img src="'+galleryImgs[0]+'" alt="'+escHtml(product.name)+'" class="pd-gallery__main" id="pdMainImg"/>'
+          + (galleryImgs.length > 1 ? '<button class="pd-gallery__arrow pd-gallery__arrow--prev" id="pdPrev">&#8249;</button><button class="pd-gallery__arrow pd-gallery__arrow--next" id="pdNext">&#8250;</button>' : '')
+        + '</div>'
+      + '</div>'
+
+      // ── RIGHT: Info
+      + '<div class="pd-info">'
+        + '<p class="pd-breadcrumb"><a href="index.html">Home</a> / <a href="'+catPage+'">'+product.category.charAt(0).toUpperCase()+product.category.slice(1)+'</a> / '+escHtml(product.name)+'</p>'
+        + '<p class="pd-label">'+product.category.toUpperCase()+'</p>'
+        + '<h1 class="pd-name">'+escHtml(product.name)+'</h1>'
+
+        // Rating
+        + '<div class="pd-rating-row">'
+          + '<span class="pd-rating-stars">'+starStr(Math.round(avgRating||4))+'</span>'
+          + '<span class="pd-rating-count">'+( reviews.length ? avgRating + ' (' + reviews.length + ' reviews)' : 'Be the first to review' )+'</span>'
+        + '</div>'
+
+        // Price
+        + '<div class="pd-price-row">'
+          + '<span class="pd-price">₹'+product.price.toLocaleString('en-IN')+'</span>'
+          + (product.oldPrice ? '<span class="pd-price-old">₹'+product.oldPrice.toLocaleString('en-IN')+'</span>' : '')
+          + (product.oldPrice ? '<span class="pd-discount">'+Math.round((1-product.price/product.oldPrice)*100)+'% OFF</span>' : '')
+        + '</div>'
+        + '<p class="pd-material">'+escHtml(product.material||'')+'</p>'
+
+        // Colours — removed per design requirement
+
+        // Sizes
+        + (product.sizes[0] !== 'OS'
+          ? '<div class="pd-sizes"><p class="pd-section-label">Size — <span id="pdSizeLabel" style="color:var(--white);">'+product.sizes[0]+'</span></p>'
+              + '<div class="pd-sizes__row" id="pdSizeBtns">'
+                + product.sizes.map(function(s,i){
+                    return '<button class="pd-size-btn'+(i===0?' active':'')+'" data-size="'+s+'">'+s+'</button>';
+                  }).join('')
+              + '</div>'
+            + '</div>'
+          : '<input type="hidden" id="pdSizeHidden" value="OS"/>')
+
+        // Qty
+        + '<div class="pd-qty-row">'
+          + '<p class="pd-section-label" style="margin:0">Quantity</p>'
+          + '<div class="pd-qty">'
+            + '<button class="pd-qty-btn" id="pdQtyMinus">−</button>'
+            + '<span class="pd-qty-val" id="pdQtyVal">1</span>'
+            + '<button class="pd-qty-btn" id="pdQtyPlus">+</button>'
+          + '</div>'
+        + '</div>'
+
+        // Actions
+        + '<div class="pd-actions">'
+          + '<button class="btn btn--gold" id="pdAddCart">Add to Bag</button>'
+          + '<button class="btn btn--outline" id="pdBuyNow">Buy Now</button>'
+          + '<button class="pd-wish-btn'+(isWishlisted(pid)?' wishlisted':'')+'" id="pdWish" aria-label="Wishlist">'
+            + '<svg width="20" height="20" viewBox="0 0 24 24" fill="'+(isWishlisted(pid)?'#ff0000':'none')+'" stroke="'+(isWishlisted(pid)?'#ff0000':'currentColor')+'" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+          + '</button>'
+        + '</div>'
+
+        // Quality Promise — shown on every product detail page
+        + '<div class="pd-quality-promise">'
+          + '<p class="pd-quality-promise__title">The ELYRA Promise</p>'
+          + '<div class="pd-quality-badges">'
+            + '<div class="pd-quality-badge">'
+              + '<span class="pd-quality-badge__icon">★</span>'
+              + '<div class="pd-quality-badge__text">'
+                + '<span class="pd-quality-badge__heading">Premium Quality</span>'
+                + '<span class="pd-quality-badge__desc">Every ELYRA piece is crafted from hand-selected materials and passes a 12-point quality inspection before reaching you.</span>'
+              + '</div>'
+            + '</div>'
+            + '<div class="pd-quality-badge">'
+              + '<span class="pd-quality-badge__icon">🔒</span>'
+              + '<div class="pd-quality-badge__text">'
+                + '<span class="pd-quality-badge__heading">Secure Shopping</span>'
+                + '<span class="pd-quality-badge__desc">Your payment and personal data are protected. All transactions are encrypted end-to-end.</span>'
+              + '</div>'
+            + '</div>'
+            + '<div class="pd-quality-badge">'
+              + '<span class="pd-quality-badge__icon">📦</span>'
+              + '<div class="pd-quality-badge__text">'
+                + '<span class="pd-quality-badge__heading">Delivery Care</span>'
+                + '<span class="pd-quality-badge__desc">Free delivery on orders above ₹2,000. Items are packed in our signature protective packaging. 15-day hassle-free returns.</span>'
+              + '</div>'
+            + '</div>'
+          + '</div>'
+        + '</div>'
+
+        // Accordion
+        + '<div class="pd-details">'
+          + details.map(function(d, i){
+              return '<div class="pd-detail-row">'
+                + '<button class="pd-detail-toggle" data-di="'+i+'">'+d.title+'</button>'
+                + '<div class="pd-detail-body" id="pdDetail'+i+'">'+d.body+'</div>'
+              + '</div>';
+            }).join('')
+        + '</div>'
+
+        // Reviews
+        + '<div class="pd-reviews">'
+          + '<h3 class="pd-reviews__title">Customer Reviews</h3>'
+          + '<div id="pdReviewsList" class="pd-reviews__list">'
+            + (reviews.length
+                ? reviews.map(function(r){
+                    return '<div class="pd-review">'
+                      + '<div class="pd-review__header">'
+                        + '<span class="pd-review__stars">'+starStr(r.rating)+'</span>'
+                        + '<span class="pd-review__author">'+escHtml(r.author)+'</span>'
+                        + '<span class="pd-review__date">'+new Date(r.date||Date.now()).toLocaleDateString('en-IN',{month:'short',day:'numeric',year:'numeric'})+'</span>'
+                      + '</div>'
+                      + '<p class="pd-review__text">'+escHtml(r.text)+'</p>'
+                    + '</div>';
+                  }).join('')
+                : '<p class="pd-review__empty">No reviews yet. Be the first to write one below.</p>')
+          + '</div>'
+
+          // Review form
+          + '<div class="pd-review-form">'
+            + '<p class="pd-review-form__title">Write a Review</p>'
+            + '<div class="pd-star-pick" id="pdStarPick">'
+              + [1,2,3,4,5].map(function(n){ return '<button class="pd-star-btn" data-star="'+n+'">★</button>'; }).join('')
+            + '</div>'
+            + '<input class="form-input" id="pdReviewName" placeholder="Your name" maxlength="40" style="margin-top:4px;"/>'
+            + '<textarea class="form-input" id="pdReviewText" placeholder="Share your experience with this product…" rows="3" maxlength="400" style="resize:vertical;margin-top:8px;"></textarea>'
+            + '<button class="btn btn--gold" id="pdSubmitReview" style="margin-top:4px;">Post Review</button>'
+          + '</div>'
+        + '</div>'
+
+      + '</div>'  // end pd-info
+    + '</div>';   // end pd-wrap
+
+    // ── Related products (same category)
+    var related = PRODUCTS.filter(function(p){ return p.category === product.category && p.id !== pid; });
+    // remove duplicates by name
+    var seenNames = {};
+    related = related.filter(function(p){ if(seenNames[p.name]) return false; seenNames[p.name]=true; return true; });
+    related = related.slice(0, 6);
+
+    if (related.length) {
+      var relHtml = '<section class="pd-related"><h2 class="pd-related__title">More '
+        + product.category.charAt(0).toUpperCase() + product.category.slice(1) + '</h2>'
+        + '<div class="pd-related__grid">'
+        + related.map(function(p){
+            return '<div class="shop-card" data-product-id="'+p.id+'" data-category="'+p.category+'" style="cursor:pointer;" onclick="window.location.href=\'product.html?id='+p.id+'\'">'
+              + '<div class="shop-card__img-wrap">'
+                + '<img src="'+p.image+'" alt="'+escHtml(p.name)+'" loading="lazy" style="transition:transform 0.4s ease"/>'
+                + '<button class="shop-card__wish" data-wish-id="'+p.id+'" onclick="event.stopPropagation();toggleWishlist(\''+p.id+'\')">♡</button>'
+              + '</div>'
+              + '<div class="shop-card__body">'
+                + '<p class="shop-card__name">'+escHtml(p.name)+'</p>'
+                + '<p class="shop-card__price">₹'+p.price.toLocaleString('en-IN')+'</p>'
+                + '<button class="shop-card__btn" data-pid="'+p.id+'" onclick="event.stopPropagation();openProductPage(\''+p.id+'\')">View Product</button>'
+              + '</div>'
+            + '</div>';
+          }).join('')
+        + '</div></section>';
+      main.insertAdjacentHTML('beforeend', relHtml);
+    }
+
+    // ── INTERACTIVITY ──────────────────────────────────────
+
+    // Gallery navigation
+    var currentImg = 0;
+    function setGalleryImg(idx) {
+      if (idx < 0) idx = galleryImgs.length - 1;
+      if (idx >= galleryImgs.length) idx = 0;
+      currentImg = idx;
+      var mainImg = document.getElementById('pdMainImg');
+      if (mainImg) { mainImg.style.opacity = '0.4'; mainImg.src = galleryImgs[idx]; mainImg.onload = function(){ mainImg.style.opacity = '1'; }; }
+      $$('.pd-gallery__thumb').forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+    }
+    $$('.pd-gallery__thumb').forEach(function(t){ t.addEventListener('click',function(){ setGalleryImg(+t.getAttribute('data-idx')); }); });
+    var prevBtn = document.getElementById('pdPrev');
+    var nextBtn = document.getElementById('pdNext');
+    if (prevBtn) prevBtn.addEventListener('click', function(){ setGalleryImg(currentImg-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(){ setGalleryImg(currentImg+1); });
+
+    // Colour swatches — removed
+
+    // Size
+    var activeSize = product.sizes[0];
+    $$('.pd-size-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        $$('.pd-size-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeSize = btn.getAttribute('data-size');
+        var lbl = document.getElementById('pdSizeLabel');
+        if (lbl) lbl.textContent = activeSize;
+      });
+    });
+
+    // Qty
+    var qty = 1;
+    document.getElementById('pdQtyMinus').addEventListener('click', function(){
+      if (qty > 1) { qty--; document.getElementById('pdQtyVal').textContent = qty; }
+    });
+    document.getElementById('pdQtyPlus').addEventListener('click', function(){
+      qty++; document.getElementById('pdQtyVal').textContent = qty;
+    });
+
+    // Add to cart — Promise-based (shows Pending → Fulfilled/Rejected)
+    document.getElementById('pdAddCart').addEventListener('click', function(){
+      var sz  = (product.sizes[0]==='OS') ? 'OS' : activeSize;
+      handleAddToCartPromise(pid, sz, qty, this);
+    });
+
+    // Buy now — stores ONLY this product in elyra_buy_now, then goes to cart.
+    // The shared cart is left untouched so other bag items are preserved.
+    document.getElementById('pdBuyNow').addEventListener('click', function(){
+      var sz   = (product.sizes[0]==='OS') ? 'OS' : activeSize;
+      var self = this;
+      self.disabled    = true;
+      self.textContent = 'Going to checkout…';
+      self.style.opacity = '0.7';
+      // Use the Promise to validate the product exists before proceeding
+      addToCartP(pid, sz, qty)
+        .then(function(p) {
+          // Store ONLY this item under the Buy Now key — not in the shared cart
+          var buyNowItem = {
+            id:       p.id,
+            name:     p.name,
+            price:    p.price,
+            image:    p.image,
+            size:     sz,
+            color:    '',
+            qty:      qty,
+            material: p.material || ''
+          };
+          localStorage.setItem('elyra_buy_now', JSON.stringify(buyNowItem));
+          window.location.href = 'cart.html';
+        })
+        .catch(function(err) {
+          showToast(err, 'error');
+          self.disabled = false; self.textContent = 'Buy Now'; self.style.opacity = '1';
+        });
+    });
+
+    // Wishlist
+    document.getElementById('pdWish').addEventListener('click', function(){
+      toggleWishlist(pid);
+      var w = isWishlisted(pid);
+      this.classList.toggle('wishlisted', w);
+      var svg = this.querySelector('svg');
+      if (svg){ svg.setAttribute('fill',w?'#ff0000':'none'); svg.setAttribute('stroke',w?'#ff0000':'currentColor'); }
+    });
+
+    // Accordion
+    $$('.pd-detail-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var idx = btn.getAttribute('data-di');
+        var body = document.getElementById('pdDetail'+idx);
+        var isOpen = body.classList.contains('open');
+        $$('.pd-detail-body').forEach(function(b){ b.classList.remove('open'); });
+        $$('.pd-detail-toggle').forEach(function(b){ b.classList.remove('open'); });
+        if (!isOpen){ body.classList.add('open'); btn.classList.add('open'); }
+      });
+    });
+    // Open first by default
+    var firstBody = document.getElementById('pdDetail0');
+    var firstToggle = document.querySelector('.pd-detail-toggle');
+    if (firstBody && firstToggle){ firstBody.classList.add('open'); firstToggle.classList.add('open'); }
+
+    // Star picker
+    var selectedStars = 5;
+    function highlightPdStars(n){
+      $$('.pd-star-btn').forEach(function(btn){ btn.classList.toggle('active', +btn.getAttribute('data-star') <= n); });
+    }
+    $$('.pd-star-btn').forEach(function(btn){
+      btn.addEventListener('mouseover', function(){ highlightPdStars(+btn.getAttribute('data-star')); });
+      btn.addEventListener('click', function(){ selectedStars = +btn.getAttribute('data-star'); highlightPdStars(selectedStars); });
+    });
+    document.getElementById('pdStarPick').addEventListener('mouseleave', function(){ highlightPdStars(selectedStars); });
+    highlightPdStars(selectedStars);
+
+    // Submit review
+    document.getElementById('pdSubmitReview').addEventListener('click', function(){
+      var name = document.getElementById('pdReviewName').value.trim();
+      var text = document.getElementById('pdReviewText').value.trim();
+      if (!name){ showToast('Please enter your name.','error'); return; }
+      if (!text){ showToast('Please write a review.','error'); return; }
+
+      var all = getReviews();
+      if (!all[pid]) all[pid] = [];
+      var entry = { rating: selectedStars, author: name, text: text, date: Date.now() };
+      all[pid].unshift(entry);
+      saveReviews(all);
+      showToast('Review posted! Thank you.','success');
+
+      var listEl = document.getElementById('pdReviewsList');
+      listEl.insertAdjacentHTML('afterbegin',
+        '<div class="pd-review">'
+          + '<div class="pd-review__header">'
+            + '<span class="pd-review__stars">'+starStr(selectedStars)+'</span>'
+            + '<span class="pd-review__author">'+escHtml(name)+'</span>'
+            + '<span class="pd-review__date">'+new Date().toLocaleDateString('en-IN',{month:'short',day:'numeric',year:'numeric'})+'</span>'
+          + '</div>'
+          + '<p class="pd-review__text">'+escHtml(text)+'</p>'
+        + '</div>'
+      );
+      // Remove empty message if present
+      var emptyMsg = listEl.querySelector('.pd-review__empty');
+      if (emptyMsg) emptyMsg.remove();
+
+      document.getElementById('pdReviewName').value = '';
+      document.getElementById('pdReviewText').value = '';
+      selectedStars = 5;
+      highlightPdStars(selectedStars);
+    });
+
+    // Sync wishlist buttons on related cards
+    syncWishButtons();
+    updateCartBadge();
+    updateWishBadge();
+
+  })();
+
+  function openProductPage(pid){
+    window.location.href = 'product.html?id=' + pid;
+  }
+  </script>
+</body>
+</html>
